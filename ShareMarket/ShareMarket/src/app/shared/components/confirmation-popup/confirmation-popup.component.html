@@ -1,0 +1,50 @@
+<div ngb-modal-draggable [ngbModalDraggableHandle]="draggableHandle">
+  <div #draggableHandle class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{ title }}</h4>
+    <!-- <button
+      type="button"
+      class="close"
+      data-dismiss="modal"
+      (click)="activeModal.dismiss('Cross click')"
+    >
+      &times;
+    </button> -->
+  </div>
+
+  <div class="modal-body text-danger" style="font-family: sans-serif; font-size: medium;">    
+      <p>{{ msg }}</p>
+      <p *ngIf="!!subMsg">{{ subMsg }}</p>
+  </div>
+  <div class="modal-footer">
+  <div class="col-lg-12 text-center mt-4 mb-4" *ngIf="isYesNO">
+    <input
+      type="button"
+      id="yes"
+      name="yes"
+      (click)="closeModal(true)"
+      class="btn btn-primary mr-10 popup-btn-width btn-md"
+      [value]="Yes"
+    />
+
+    <input
+      type="button"
+      id="no"
+      name="no"
+      (click)="activeModal.dismiss(false)"
+      class="btn btn-secondary popup-btn-width btn-border-1  btn-md"
+      [value]="No"
+    />
+  </div>
+
+  <div class="col-lg-12 text-center mt-4 mb-4" *ngIf="isOK">
+    <input
+      type="button"
+      id="ok"
+      name="ok"
+      (click)="closeModal(true)"
+      class="btn btn-primary mr-2 popup-btn-width"
+      [value]="Yes"
+    />
+  </div>
+  </div>
+</div> 

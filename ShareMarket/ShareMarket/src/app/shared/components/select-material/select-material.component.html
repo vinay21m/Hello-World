@@ -1,0 +1,21 @@
+<form class="table-actionbar">
+    <div class="search-box">
+        <mat-form-field class="example-form-field" appearance="legacy">
+            <mat-icon matSuffix>expand_more</mat-icon>
+            <mat-label>{{!!title ? title : 'Select'}}</mat-label>
+            <input type="text" [placeholder]="placeholder" matInput 
+                [formControl]="typeahead" 
+                [matAutocomplete]="auto"
+                (input)="searchData($event)"
+                [value]="searchValue"
+                [required]="requried"
+                autocomplete="off">            
+            <mat-progress-bar mode="indeterminate" *ngIf="loading > 0"></mat-progress-bar>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="setValue($event)">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </div>
+</form>

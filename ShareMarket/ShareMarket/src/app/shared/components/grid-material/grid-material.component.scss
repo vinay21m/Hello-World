@@ -1,0 +1,40 @@
+table {
+  width: 100%;
+}
+
+.table-actionbar {
+  padding         : 2px;
+  display         : flex;
+  background-color: rgba(255, 255, 255, 0.904);
+}
+
+.table-actionbar {
+  flex: 1;
+}
+
+.searchcontrol {
+  width: 15%;
+  float: right;
+}
+
+.th-center {
+  background-color: #6495ed !important;
+  color: white !important;
+  border-left: #fff solid 0.2px !important;
+}
+
+.padding-top-1em {
+  padding-top: 1em;
+}
+
+.margin-left-5 {
+  margin-left: 5px;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+mat-cell:first-of-type, mat-header-cell:first-of-type, mat-footer-cell:first-of-type {
+  padding-left: 10px !important;
+}

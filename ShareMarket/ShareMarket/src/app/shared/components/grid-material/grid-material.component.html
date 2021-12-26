@@ -1,0 +1,80 @@
+<div class="mat-elevation-z8 mb-6">
+  <table >
+    <tr>
+      <th class="padding-top-1em">
+        <mat-form-field class="searchcontrol" *ngIf="dataSource?.data?.length" appearance="legacy">
+          <!-- <mat-icon matPrefix>search</mat-icon> -->
+          <mat-label>Search</mat-label>
+          <input matInput type="text" class="mb-8" [(ngModel)]="value" [value]="value ?? ''"
+            (keyup)="applyFilter($event)">
+          <button *ngIf="!!value" matSuffix mat-icon-button aria-label="Clear" (click)="clearFilter();">
+              <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </th>
+    </tr>
+  </table>
+  <!-- </div>  -->
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- checkbox header -->
+    <ng-container matColumnDef="select">
+      <mat-header-cell class="th-center" *matHeaderCellDef>
+        <mat-checkbox color="primary" (change)="$event ? masterToggle() : null"
+          [checked]="selection.hasValue() && isAllSelected()"
+          [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *cdkCellDef="let row">
+        <mat-checkbox color="primary" (click)="$event.stopPropagation()"
+          (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <!-- table dynamic columns -->
+    <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+      <mat-header-cell class="th-center" *cdkHeaderCellDef mat-sort-header>
+        <span class="margin-left-5">{{ column.header }}</span>
+      </mat-header-cell>
+      <mat-cell *cdkCellDef="let row">
+        <div (click)="cellClickHandler(row)" class="margin-left-5">
+          {{ row[column.columnDef] | dynamicPipe: column.pipe:column.args }}</div>
+      </mat-cell>
+    </ng-container>
+
+    <!-- table action column -->
+    <ng-container matColumnDef="action">
+      <mat-header-cell class="th-center" *matHeaderCellDef>
+        <span class="margin-left-5">
+          Action
+        </span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" action-buttons [value]="element">
+        <mat-icon (click)="removeRow(element)" class="d-flex justify-content-center">delete</mat-icon>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="linkingRequired">
+      <mat-header-cell class="th-center" *matHeaderCellDef>
+        <span class="margin-left-5">
+          {{linkActionHeaderLable}}
+        </span>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" action-buttons [value]="element">
+        <mat-slide-toggle class="form-check-input" (change)="isLinkedChecked(element,$event)"
+          [checked]="element.isSelected" [disabled]="isCaseEdit"></mat-slide-toggle>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <table>
+    <tr *ngIf="!dataSource?.data?.length">
+      <td class="text-align-center" [attr.colspan]="displayedColumns.length">
+        No Records Found!
+      </td>
+    </tr>
+  </table>
+  <!-- table pagination -->
+  <mat-paginator [hidden]="!dataSource?.data?.length" [pageSizeOptions]="[10, 50, 100]" showFirstLastButtons></mat-paginator>
+</div>

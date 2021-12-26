@@ -1,0 +1,21 @@
+<ng-container>
+  <!-- <mat-toolbar class="vs-header">Header</mat-toolbar> -->
+
+  <mat-sidenav-container class="vs-container">
+    <mat-sidenav  *ngIf="isLogin" #sidenav mode="side" opened class="vs-sidenav"
+                 [fixedInViewport]="options.value.fixed" [fixedTopGap]="options.value.top"
+                 [fixedBottomGap]="options.value.bottom">
+      <app-nav-sidebar></app-nav-sidebar>
+    </mat-sidenav>
+
+    <mat-sidenav-content [formGroup]="options">
+      <div class="page-content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+  <mat-toolbar class="vs-footer">
+    <app-nav-footer></app-nav-footer>
+  </mat-toolbar>
+</ng-container>

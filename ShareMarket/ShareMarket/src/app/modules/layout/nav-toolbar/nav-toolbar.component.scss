@@ -1,0 +1,85 @@
+.topbar {
+  background-color: #0047BA;
+}
+
+.user-name,
+.company-name {
+  font-family: 'Open_Sans';
+}
+
+.company-name {
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.parent-icon {
+  // font-weight: 50;
+  font-size: 24px;
+}
+
+.bx.bx-category,
+.company-name,
+.parent-icon,
+.topbar .navbar .navbar-nav .nav-link,
+.user-box,
+.user-name {
+  color: #ffffff;
+}
+
+.bx {
+  font-weight: normal;
+}
+
+.dropdown-toggle-nocaret:after {
+  display: none;
+}
+
+.dropdown-large {
+	position: relative
+}
+
+.dropdown-large .dropdown-tools,
+.dropdown-large .dropdown-notification {
+  width: 360px;
+}
+
+.dropdown-large .dropdown-menu {
+  border: 0;
+  padding: 0 0;
+  border-radius: 10px;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%);
+}
+
+.dropdown-large .dropdown-menu .dropdown-item {
+  padding: .5rem 1.3rem;
+  border-bottom: 1px solid #ededed;
+}
+
+.profile-box {
+  position:relative;
+  height: 60px;
+}
+
+.nav-toolbar-date {
+  font-family: Open_Sans;
+  font-size: 11pt;
+}
+
+.stack-panels {
+  height:20px;margin:5px auto;
+}
+
+.text-primary {
+  color: #008cff!important;
+}
+
+.header-notifications-list,
+.header-knowledge-list {
+  overflow: hidden!important;
+	position: relative;
+}
+
+
+.header-notifications-list {
+	height: 360px
+}

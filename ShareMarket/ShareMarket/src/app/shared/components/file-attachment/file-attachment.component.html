@@ -1,0 +1,165 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-12 float-right">
+      <svg (click)="closePop()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="cursor feather feather-x-circle text-primary float-right" style="float:right">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="15" y1="9" x2="9" y2="15"></line>
+          <line x1="9" y1="9" x2="15" y2="15"></line>
+      </svg>
+    </div>
+    <div
+      class="
+        col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12
+        container
+        justify-content-center
+      "
+    >
+    <div class="col-12">
+      <div class="text-center">
+        <h5>Files to be Uploaded</h5>
+      </div>
+      <div id="drop_zone" class="col-xs-6 col-xs-offset-3 text-center drag-and-drop-area"
+      (drop)="dropHandler($event)" (dragover)="dragOverHandler($event)">
+        <p>Drag and Drop File here...</p>
+        <br />
+        <div>
+          <label class="card-text text-bold text-primary cursor"
+          >Click to browse
+          <input
+          type="file"
+          multiple
+          (change)="getFileDetails($event)"
+          hidden
+          #fileInput
+        />
+          </label>
+        </div>
+      </div>
+      <span class="col-xs-offset-3 col-file-size" *ngIf="!!attachmentSizeValue && !!attachmentSuffixe">
+        Attachments size should not be greater than {{attachmentSizeValue}}{{attachmentSuffixe}}
+      </span>
+    </div>
+    <div class="col-12">
+      <table class="table table-bordered file-attachment-table" *ngIf="files.length > 0">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Output File Name</th>
+            <th scope="col">Attachment File Name(s)</th>
+            <th scope="col">Description(s)</th>
+            <th scope="col">Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let file of files; let i = index">
+            <td>
+              <button class="btn btn-danger btn-sm"  (click)="removeAttachment(i, 'file', file.attachmentName)">
+              <i class="pi pi-times pi-times-sm"></i>
+              </button>
+            </td>
+            <td>{{ file.attachmentName }}</td>
+            <td class="pull-center">
+              <input
+                type="text"
+                id="fileAttached"
+                placeholder="File to be Attached"
+                (input)="onRowDescription($event, file, 'attachmentFileName')"
+                [value]="file.attachmentFileName"
+              />
+            </td>
+            <td class="pull-center">
+              <input
+                type="text"
+                id="fileDescription"
+                placeholder="Description"
+                (input)="onRowDescription($event, file, 'description')"
+                [value]="file.description"
+              />
+            </td>
+            <td>
+              <p-progressBar [value]="file.progressBar"></p-progressBar>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-12 row">
+      <div class="text-center">
+        <h5>Files to be Linked</h5>
+      </div>
+      <div class="col-10">
+        <input class="form-control ps-1 radius-30 col-12"
+          type="text"
+          [(ngModel)]="fileLinkText"
+          [value]="fileLinkText"
+          (input)="fileLinkText = textFileLink.value"
+          placeholder="Type or paste full path URL"
+          #textFileLink
+        />
+      </div>
+      <div class="col-2">        
+        <button [disabled]="!!!fileLinkText"
+        class="btn btn-primary pull-right"
+        (click)="getLink()">
+            Add
+        </button>
+      </div>
+    </div> 
+    <div class="col-12 margin-top-20">
+
+      <table class="table table-bordered file-attachment-table" *ngIf="filesLink.length > 0">
+        <thead>
+          <tr>
+            <th></th>
+            <th scope="col">Attachment File Name(s)</th>
+            <th scope="col">Attachment Link(s)</th>
+            <th scope="col">Progress</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let file of filesLink; let i = index">
+            <td>
+              <button class="btn btn-danger btn-sm"  (click)="removeAttachment(i, 'link', file.attachmentName)">
+              <i class="pi pi-times pi-times-sm"></i>
+              </button>
+            </td>
+            <td class="pull-center">
+                {{ file.attachmentName }}
+            </td>
+            <td class="pull-center">
+              <label>{{ file.attachmentFileName }}</label>
+            </td>
+            <td>
+              <p-progressBar [value]="file.progressBar"></p-progressBar>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>    
+    </div>
+
+    <div
+      class="col-lg-12 col-md-12 col-sm-12 col-12"
+      *ngIf="filesLink.length > 0 || files.length > 0"
+    >
+      <div class="attach-file-btn justify-content-center">
+        <button
+          class="button-text btn btn-primary"
+          label="Attach and Link"
+          (click)="AttachLinkCase()"
+          [disabled]="isSaveAttach > 0"
+        >
+          <span
+            class="spinner-grow spinner-grow-sm"
+            role="status"
+            aria-hidden="true"
+            *ngIf="isSaveAttach > 0"
+          ></span>
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

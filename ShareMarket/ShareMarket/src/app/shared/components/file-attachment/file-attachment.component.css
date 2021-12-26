@@ -1,0 +1,128 @@
+.container {
+    padding: 10px;
+    margin-bottom:20px;
+}
+.card-middle input[type="text"] {
+    border: none;
+    width: 212px;
+    border-top: 1px solid #ccc;
+    height: 20px;
+}
+.pull-center input[type="text"] {
+    border: none;
+}
+span.link {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+input:focus{ 
+    outline: none;
+}
+.main-card {
+    background-color: #E2F4F9;
+    border-radius: 5px;
+    box-shadow: #ccc 0 0 2px;
+} 
+.card-middle {
+    background-color: #fff;
+    padding: 3px;
+    border-radius: 10px;
+    box-shadow: #ccc 0 0 2px;
+}
+.card-middle span {
+    border-top: 1px solid #000;
+}
+.pull-right {
+    float: right;
+    padding: 5px 19px;
+    border-radius: 10px;
+}
+.pull-btn-center {
+    padding: 5px 19px;
+    border-radius: 10px; 
+}
+.remove-btn {
+    cursor: pointer;
+}
+.card-text {
+    padding: 0px 3px;
+    margin: 0px;
+}
+.card-title {
+    font-weight: 400;
+    font-size: 16px;
+}
+.text-bold {
+    font-weight: 600;
+}
+.ellipshis-style {
+    float: right;
+    padding: 5px;
+    cursor: pointer;
+    margin-right: -50%;
+}
+.border-top {
+    padding: 1px 3px;
+    margin: 0px;
+}
+.get-file-btn {
+    position: absolute;
+    top: 53px;
+    right: 65px;
+}
+.attach-file-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.card-attach {
+    background-color: #fff;
+    border:1px solid #000;
+    padding: 0px;   
+  }
+.file-attachment-table {
+    width: 100%;
+    margin: 0px auto 5px;
+    
+}
+.link-attachment-table {
+    width: 100%;
+    margin: 0px auto;
+}
+.file-attachment-table th, .link-attachment-table th {
+    background-color: #E2F4F9;
+}
+.pull-center {
+    text-align: left;
+}
+
+@media only screen and (max-width: 600px) {
+    .file-attachment-table, .link-attachment-table {
+        width: 100%;
+    }
+  }
+ 
+
+  .drag-and-drop-area {
+    color: #ccc;
+    border: 3px dotted #ccc;
+    min-height: 100px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding-top: 10px;
+    background-color: #f5f5f5;
+}
+.col-xs-offset-3 {
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.col-file-size {
+    margin-top: -20px;
+    margin-bottom: 20px;
+    display: flex;
+}
+.margin-top-20 {
+    margin-top: 20px;
+}
